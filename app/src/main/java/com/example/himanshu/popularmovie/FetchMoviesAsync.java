@@ -66,8 +66,10 @@ public class FetchMoviesAsync extends AsyncTask<String,Void,String> {
     }
 
     public static void loadInfo(String JsonStr){
-        MainActivity.list.clear();
-        MainActivity.images.clear();
+        if(MainActivity.list!=null){
+        MainActivity.list.clear();}
+        if(MainActivity.images!=null){
+        MainActivity.images.clear();}
 
 
         try {

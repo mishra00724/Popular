@@ -22,9 +22,12 @@ public class HttpHandler {
 
             URL url = new URL(requrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.connect();
             conn.setRequestMethod("GET");
             //READ THE RESPONSE
-            InputStream in = new BufferedInputStream(conn.getInputStream());
+
+            InputStream in = conn.getInputStream();
+
             response = covertStreamToString(in);
 
         } catch (MalformedURLException e) {
@@ -40,8 +43,8 @@ public class HttpHandler {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 
-        StringBuilder sb = new StringBuilder();
-        String line;
+        StringBuffer sb = new StringBuffer();
+        String line="";
 
         try {
             while((line = reader.readLine())!=null){
